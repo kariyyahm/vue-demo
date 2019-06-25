@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="aapp">
+        <quanju-component></quanju-component>
+        <aapp-component></aapp-component>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+
+    <script>
+        Vue.component('quanju-component', {
+            template: '<div><p>我是全局注册组件</p></div>'
+        })
+        var aapp = new Vue({
+            el: '#aapp',
+            data: {
+                person: {
+                    ni: 'daxiong',
+                    wo: 'panghu',
+                    ta: 'jingxiang'
+                }
+            },
+            components: {
+                'aapp-component': {
+                    template: '<div>我是aapp的局部组件</div>'
+
+                    
+                }
+            }
+        })
+
+        var bbpp = new Vue({
+            el: '#bbpp',
+
+        })
+    </script>
+</body>
+
+</html>
