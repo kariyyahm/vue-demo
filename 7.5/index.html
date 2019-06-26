@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="number">
+        <my-com v-bind:mms="number"></my-com>
+
+    </div>
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script>
+        Vue.component('my-com', {
+            props: ['mms'],
+            template: '<div v-bind:style="redstyle"></div>',
+            computed: {
+                redstyle: function () {
+                    return {
+                        width: this.mms + 'px',
+                        height: this.mms + 'px',
+                        background: 'red'
+                    }
+                }
+            }
+
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                number: ''
+            }
+
+        })
+
+
+    </script>
+</body>
+
+</html>
