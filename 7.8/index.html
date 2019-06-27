@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-com>
+            <p>我是父组件的内容</p>
+            <div>w shi fuzujian</div>
+        </my-com>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script>
+        Vue.component('my-com',{
+            template: '<span><div><slot>如果没有父组件内容，出现子组件的内容</slot></div></span>'
+        })
+        var app = new Vue({
+            el: '#app',
+
+        })
+    </script>
+</body>
+
+</html>

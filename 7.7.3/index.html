@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <a-com></a-com>
+        <b-com></b-com>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script>
+        Vue.component('a-com', {
+            template: '<button @click="sendb">把消息发给b</button>',
+            data: function () {
+                return { atext: '我是A组件的消息' }
+            },
+            methods: {
+                sendb: function () {
+                    this.$root.bus.$emit('cc', this.atext)
+                }
+            }
+        })
+        Vue.component('b-com', {
+            template: '<div>{{btext}}</div>',
+            created:function(){
+                this.$root.bus.$on('cc',function(value){
+                    alert(value)
+                })
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                bus: new Vue()
+            }
+        })
+    </script>
+</body>
+
+</html>

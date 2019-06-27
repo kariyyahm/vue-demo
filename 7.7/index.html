@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        您好，你的账户余额为{{number}}
+        <!-- <my-xx v-on:change="turnNumber"></my-xx> -->
+        <my-xx v-model="number"></my-xx>
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            components: {
+                'my-xx': {
+                    template: '<div><button v-on:click="duoduo">+100</button><button v-on:click="shaoshao">-100</button></div>',
+                    methods: {
+                        duoduo: function () {
+                            this.count = this.count + 100
+                            // this.$emit('change', this.count)
+                            this.$emit('input', this.count)
+                        },
+                        shaoshao: function () {
+                            this.count = this.count - 100
+                            // this.$emit('change', this.count)
+                            this.$emit('input', this.count)
+                        },
+                    },
+                    data: function () {
+                        return {
+                            count: 0
+                        }
+                    }
+                }
+            },
+            data: {
+                number: 0
+            },
+            // methods: {
+            //     turnNumber: function (value) {
+            //         this.number = value
+            //     }
+            // }
+        })
+    </script>
+</body>
+
+</html>
