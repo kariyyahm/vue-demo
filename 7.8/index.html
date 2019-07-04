@@ -11,15 +11,23 @@
 <body>
     <div id="app">
         <my-com>
-            <p>我是父组件的内容</p>
-            <div>w shi fuzujian</div>
+            <h3>我是父组件的标题</h3>
+            <p slot="abc">我是父组件的正文</p>
         </my-com>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script>
-        Vue.component('my-com',{
-            template: '<span><div><slot>如果没有父组件内容，出现子组件的内容</slot></div></span>'
+        Vue.component('my-com', {
+            // template: '<span><slot>如果没有父组件内容，出现子组件的内容</slot></span>'
+
+            template: '<span><slot></slot><ol><slot name="abc">如果没有父组件内容，出现子组件的内容</slot></ol></span>',
+            mounted: function () {
+                var abc = this.$slots.abc
+                let abcText = abc[0].elm.innerText
+                console.log(abc)
+                console.log(abcText)
+            }
         })
         var app = new Vue({
             el: '#app',

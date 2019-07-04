@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <component :is="view"></component>
+        <button @click="handleView('a')">111</button>
+        <button @click="handleView('b')">222</button>
+        <button @click="handleView('c')">333</button>
+        <button @click="handleView('d')">444</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script>
+        Vue.component('com-a', {
+            template: '<div>111hao</div>'
+        })
+        Vue.component('com-b', {
+            template: '<div>222hao</div>'
+        })
+        Vue.component('com-c', {
+            template: '<div>333hao</div>'
+        })
+        Vue.component('com-d', {
+            template: '<div>444hao</div>'
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                view: 'com-a'
+            },
+            methods: {
+                handleView: function (key) {
+                    this.view = 'com-' + key
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
